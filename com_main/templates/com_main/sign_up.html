@@ -1,0 +1,27 @@
+{% extends 'com_main/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Sign up {% endblock %}
+{% block content_unlogged %} 
+<div class="d-flex justify-content-center">
+  <div class="card col-md-5" style="margin-top:5%">
+    <div class="card-body">
+      <h5 class="card-title text-center">Sign up</h5>
+        <form action="{% url 'com_main:sign_up' %}" method='POST'>
+          {% csrf_token %}
+          {% crispy form %}
+          <div class='button text-center'>
+            <a href="{% url 'com_main:log_in' %}">
+              <button type='submit' class="btn btn-secondary"> Sign up </button>
+            </a>
+          </div>
+        </form>
+        <div class='button text-center'>
+          <a href="{% url 'com_main:log_in' %}">
+            <button type='submit' class="btn btn-secondary"> Go to login </button>
+          </a>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

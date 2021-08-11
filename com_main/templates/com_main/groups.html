@@ -1,0 +1,24 @@
+{% extends 'com_main/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %} Groups {% endblock %}
+
+{% block content %}
+  <div class="d-flex justify-content-left">
+    {% for group in groups %}
+      <a> {{group}} </a>
+    {% endfor %}
+  </div>
+{% endblock %}
+
+{% block content_unlogged %}
+    <div class="card col-md-9">
+        <div class="card-body">
+            <p><strong> You have no access to this site... </strong></p>
+            <p> Please, log in or register </p>
+            <a href="{% url 'com_main:log_in' %}"><button class="btn btn-secondary"> Log in </button></a>
+            <a href="{% url 'com_main:sign_up' %}"><button class="btn btn-secondary"> Sign up </button></a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'com_main/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %} Dashboard {% endblock %}
+
+{% block content %}
+  <div class="d-flex justify-content-center">
+    <div class="card col-9" style="margin-top:10%">
+      <div class="card-body">
+        <h5 class="card-title text-center"> Welcome on our site </h5>
+        <p> Would you like to join some group? Find it now!</p>
+        <form action="{% url 'com_main:index' %}" method='POST'>
+          {% csrf_token %}
+          {{ form|crispy }}
+          <button class='btn btn-secondary' type="submit"> Search <i class="fas fa-search"></i></button>
+        </form>   
+      </div>
+    </div>
+  </div>  
+{% endblock %}
+
+{% block content_unlogged %}
+    <div class="card col-md-9">
+        <div class="card-body">
+            <p><strong> You have no access to this site... </strong></p>
+            <p> Please, log in or register </p>
+            <a href="{% url 'com_main:log_in' %}"><button class="btn btn-secondary"> Log in </button></a>
+            <a href="{% url 'com_main:sign_up' %}"><button class="btn btn-secondary"> Sign up </button></a>
+        </div>
+    </div>
+{% endblock %}
+
