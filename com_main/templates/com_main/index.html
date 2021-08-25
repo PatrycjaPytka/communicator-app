@@ -9,7 +9,7 @@
     <div class="card col-9" style="margin-top:10%">
       <div class="card-body">
         <h5 class="card-title text-center"> Welcome on our site </h5>
-        <p> Would you like to join some group? Find it now!</p>
+        <p align='center'> Would you like to join some group? Find it now!</p>
         <form action="{% url 'com_main:index' %}" method='POST'>
           {% csrf_token %}
           {{ form|crispy }}

@@ -7,37 +7,41 @@
 
 	  <div class="row justify-content-center">
 
-	  <!-- Nav Item - Dashboard -->
-	  <li class="nav-item">
-		<a class="nav-link" href="{% url 'com_main:index' %}">
-		  <i class="fas fa-fw fa-tachometer-alt"></i>
-		  <span> Dashboard </span></a>
-	  </li>
-	  {% if user.is_authenticated == False %}
-	  <!-- Nav Item - Dashboard -->
-	  <li class="nav-item">
-		<a class="nav-link" href="{% url 'com_main:log_in' %}">
-		  <i class="fas fa-sign-in-alt"></i>
-		  <span> Log in </span></a>
-	  </li>
-	  {% endif %}
-	  <!-- Nav Item - Dashboard -->
-	  <li class="nav-item">
-		<a class="nav-link" href="{% url 'com_main:log_out' %}">
-		  <i class="fas fa-sign-out-alt"></i>
-		  <span> Log out </span></a>
-	  </li>
-	  <!-- Nav Item - Dashboard -->
-	  <li class="nav-item">
-		<a class="nav-link" href="{% url 'com_main:groups' %}">
-		  <i class="fas fa-users"></i>
-		  <span> Groups </span></a>
-	  </li>
-	  
-	  <!-- Sidebar Toggler (Sidebar) -->
-	  <div class="text-center d-none d-md-inline">
-		<button class="rounded-circle border-0" id="sidebarToggle"></button>
+		<!-- Nav Item - Dashboard -->
+		<li class="nav-item">
+			<a class="nav-link" href="{% url 'com_main:index' %}">
+			<i class="fas fa-fw fa-tachometer-alt"></i>
+			<span> Dashboard </span>
+			</a>
+		</li>
+		{% if user.is_authenticated == False %}
+		<!-- Nav Item - Dashboard -->
+		<li class="nav-item">
+			<a class="nav-link" href="{% url 'com_main:log_in' %}">
+			<i class="fas fa-sign-in-alt"></i>
+			<span> Log in </span>
+			</a>
+		</li>
+		{% endif %}
+		<!-- Nav Item - Dashboard -->
+		<li class="nav-item">
+			<a class="nav-link" href="{% url 'com_main:log_out' %}">
+			<i class="fas fa-sign-out-alt"></i>
+			<span> Log out </span>
+			</a>
+		</li>
+		<!-- Nav Item - Dashboard -->
+		<li class="nav-item">
+			<a class="nav-link" href="{% url 'com_main:groups' %}">
+			<i class="fas fa-users"></i>
+			<span> Groups </span>
+			</a>
+		</li>
+		
+		<!-- Sidebar Toggler (Sidebar) -->
+		<div class="text-center d-none d-md-inline">
+			<button class="rounded-circle border-0" id="sidebarToggle"></button>
+		</div>
 	  </div>
-
 	</ul>
-	<!-- End of Sidebar -->
+<!-- End of Sidebar -->

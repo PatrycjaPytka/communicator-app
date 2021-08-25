@@ -1,0 +1,18 @@
+<ul class="nav nav-tabs flex-column">
+    <li class="nav-item">
+      <a class="nav-link" style="font-size:15px" href="{% url 'com_main:add_group' %}">
+        <i class="fas fa-plus-circle"></i> Add group 
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" style="font-size:15px" href="{% url 'com_main:delete_group' %}">
+        <i class="fas fa-minus-circle"></i> Delete group 
+      </a>
+      <div class="nav-divider"></div>
+    </li>
+  {% for group in groups %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'com_main:chat_room' group.pk %}"> {{group}} </a>
+    </li>
+  {% endfor %}
+</ul>

@@ -1,0 +1,97 @@
+{% extends 'com_main/base.html' %}
+{% load static %}
+{% block title %} Chat Room {% endblock %}
+
+{% block content %} 
+{% include 'com_main/leftnav.html' with groups=groups %}
+    <div class='container-fluid'>
+        <div class="row justify-content-center">
+                <div class='chat_box'>
+                    <div class="row justify-content-center">
+                        <h5> {{ group.name_of_group }} </h5>
+                    </div>
+                    <div class="row justify-content-center">
+                        <textarea id="chat-log" class='chat_log'></textarea>
+                    </div>
+                    <div class="row justify-content-center">
+                        <input id="chat-message-input" type="text" style='width: 31rem'>
+                        <input id="chat-message-submit" type="button" value="Send" class="btn btn-secondary">
+                        {{ group.name_of_group|json_script:"room-name" }}
+                    </div>
+            </div>
+{% comment %}     
+            <div class='right-nav col-md-2'>
+                <nav class="flex-column">
+                    <div class="row justify-content-right">
+                        <li class="nav-item">
+                            <a class="a_members"> 
+                                <i class="fas fa-users"></i> Members: 
+                            </a>
+                        </li>
+                        {% if users %}
+                            {% for name in users.members.all %}
+                            <li class="nav-item">
+                                <a class="a_names" href="{% url 'com_main:user_message' name %}"> {{ name }} <i class="far fa-comments"></i></a>
+                            </li>
+                            {% endfor %}
+                        {% endif %}
+                        <li class="nav-item">
+                            <a class="a_names_action" href="{% url 'com_main:leave_group' room_name %}">
+                                <i class="fas fa-arrow-circle-left"></i> Leave group 
+                            </a>
+                        </li> 
+                    </div>
+                </nav>
+            </div> {% endcomment %}
+        </div>
+    </div>
+{% endblock %}
+
+{%block content_unlogged %}
+    <div class="card col-md-9">
+        <div class="card-body">
+            <p><strong> You have no access to this site... </strong></p>
+            <p> Please, log in or register </p>
+            <a href="{% url 'com_main:login' %}"><button class="btn btn-secondary"> Log in </button></a>
+            <a href="{% url 'com_main:sign_up' %}"><button class="btn btn-secondary"> Sign up </button></a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        const roomName = JSON.parse(document.getElementById('room-name').textContent);
+        const chatSocket = new WebSocket(
+            'ws://'
+            + window.location.host
+            + '/ws/chat/newgroup/'
+            + roomName
+            + '/'
+        );
+
+        chatSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            document.querySelector('#chat-log').value += (data.message + '\n');
+        };
+
+        chatSocket.onclose = function(e) {
+            console.error('Chat socket closed unexpectedly');
+        };
+
+        document.querySelector('#chat-message-input').focus();
+        document.querySelector('#chat-message-input').onkeyup = function(e) {
+            if (e.keyCode === 13) {  // enter, return
+                document.querySelector('#chat-message-submit').click();
+            }
+        };
+
+        document.querySelector('#chat-message-submit').onclick = function(e) {
+            const messageInputDom = document.querySelector('#chat-message-input');
+            const message = messageInputDom.value;
+            chatSocket.send(JSON.stringify({
+                'message': message,
+                }));
+                messageInputDom.value = '';
+            };
+    </script>
+{% endblock %}
