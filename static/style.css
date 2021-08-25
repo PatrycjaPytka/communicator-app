@@ -6,29 +6,22 @@ body {
     background-color: #CCD4F8;
 }
 
-.left-nav {
-    height: 50rem;
-    background-color: lightblue;
-}
-
-.right-nav {
-    height: 50rem;
-    background-color: lightblue;
-}
-
 .chat_log {
     width: 35rem; 
     height: 30rem;
 }
 
-.flex-column {
-    width: 10rem;
-}
-
-
 .navbar-nav {
     background-color: #858796;
 }
+
+.nav {
+    background-color: #858796;
+    height: 100%;
+    width: 230px;
+    position: fixed;    
+}
+
 
 .nav-item {
     width: 15rem;

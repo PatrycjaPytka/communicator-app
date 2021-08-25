@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
-from com_main.forms import FindGroupform
+from com_main.forms import FindGroupForm
 
 
 @method_decorator(login_required, name='dispatch')
@@ -13,7 +13,7 @@ class Index(View):
     context = {}
 
     def get(self, request):
-        self.context['form'] = FindGroupform()
+        self.context['form'] = FindGroupForm()
         return render(request, self.template_name, self.context)
 
     def post(self, request):

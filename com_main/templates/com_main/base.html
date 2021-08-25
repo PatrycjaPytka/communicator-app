@@ -16,9 +16,9 @@
     {% if messages %}
       {% for message in messages %}
         {% if message.tags == 'error' %}
-          <div class="alert alert-danger alert-dismissible fade show mt-2 text-center" role="alert">
+          <div class="alert alert-danger fade show mt-2 text-center" role="alert">
         {% elif message.tags == 'success' %}
-          <div class="alert alert-success alert-dismissible fade show mt-2 text-center" role="alert">
+          <div class="alert alert-success fade show mt-2 text-center" role="alert">
         {% endif %}
         {% autoescape off %}
           {{ message }}

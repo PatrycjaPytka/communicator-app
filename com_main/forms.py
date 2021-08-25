@@ -9,8 +9,20 @@ class UserForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput())
 
 
-class FindGroupform(forms.ModelForm):
+class FindGroupForm(forms.ModelForm):
     class Meta:
         model = Group
         fields = ['name_of_group']
         labels = {'name_of_group': 'Group name: '}
+
+
+class AddGroupForm(forms.ModelForm):
+    members = forms.ModelMultipleChoiceField(queryset=User.objects.all())
+    class Meta:
+        model = Group
+        fields = ['name_of_group']
+        labels = {'name_of_group': 'Group name: '}
+
+
+class DeleteGroupForm(forms.Form):
+    groups = forms.ModelMultipleChoiceField(queryset=Group.objects.all())

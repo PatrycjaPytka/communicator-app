@@ -1,0 +1,47 @@
+{% extends 'com_main/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} CreateGroup {% endblock %}
+
+{% block content %}
+  <div class="container-fluid">
+    <div class="d-flex justify-content-center">
+      <div class="card col-9" style="margin-top:5%">
+        <div class="card-body">
+          {% if new %}    
+            <h5 class="card-title"> Create new group </h5>
+          {% else %}
+            <h5 class="card-title"> Edit group </h5>
+          {% endif %}
+          <form method='POST'> 
+            {% csrf_token %}
+            {{ form|crispy }}
+            {% if new %}
+            <button type="submit" class="btn btn-secondary"> Create </button>
+            {% else %}
+            <button type="submit" class="btn btn-secondary">
+              <i class="fas fa-edit"></i> Edit 
+            </button>
+            {% endif %}
+          </form>
+          <a href="{% url 'com_main:index' %}">
+            <button class="btn btn-secondary">
+              <i class="fas fa-undo"></i> Back 
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block content_unlogged %}
+  <div class="card col-md-9">
+    <div class="card-body">
+      <p><strong> You have no access to this site... </strong></p>
+      <p> Please, log in or register </p>
+      <a href="{% url 'com_main:log_in' %}"><button class="btn btn-secondary"> Log in </button></a>
+      <a href="{% url 'com_main:sign_up' %}"><button class="btn btn-secondary"> Sign up </button></a>
+    </div>
+  </div>
+{% endblock %}
