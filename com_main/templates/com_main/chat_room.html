@@ -60,11 +60,12 @@
 
 {% block scripts %}
     <script>
+        console.log('im here')
         const roomName = JSON.parse(document.getElementById('room-name').textContent);
         const chatSocket = new WebSocket(
             'ws://'
             + window.location.host
-            + '/ws/chat/newgroup/'
+            + '/ws/groups/'
             + roomName
             + '/'
         );

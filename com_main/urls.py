@@ -13,7 +13,7 @@ urlpatterns = [
 
     path('index/', views.Index.as_view(), name='index'),
     path('groups/', views.Groups.as_view(), name='groups'),
-    path('groups/<int:pk>/', views.ChatRoom.as_view(), name='chat_room'),
+    path('groups/<str:room_name>/', views.ChatRoom.as_view(), name='chat_room'),
 
     path('add_group/', views.AddGroup.as_view(), name='add_group'),
     path('delete_group/', views.DeleteGroup.as_view(), name='delete_group'),

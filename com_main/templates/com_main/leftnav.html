@@ -12,7 +12,7 @@
     </li>
   {% for group in groups %}
     <li class="nav-item">
-      <a class="nav-link" href="{% url 'com_main:chat_room' group.pk %}"> {{group}} </a>
+      <a class="nav-link" href="{% url 'com_main:chat_room' group.name_of_group %}"> {{group}} </a>
     </li>
   {% endfor %}
 </ul>

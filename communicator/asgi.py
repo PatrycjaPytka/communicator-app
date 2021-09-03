@@ -13,7 +13,7 @@ from django.core.asgi import get_asgi_application
 from channels.auth import AuthMiddlewareStack
 from com_main import routing
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'communicatir.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'communicator.settings')
 
 application = ProtocolTypeRouter({
                                 "http": get_asgi_application(),

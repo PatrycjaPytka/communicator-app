@@ -12,8 +12,8 @@ class ChatRoom(View):
     template_name = 'com_main/chat_room.html'
     context = {}
 
-    def get(self, request, pk):
-        group = Group.objects.get(pk=pk)
+    def get(self, request, room_name):
+        group = Group.objects.get(name_of_group=room_name)
         self.context['groups'] = Group.objects.all()
         self.context['group'] = group
         return render(request, self.template_name, self.context)
