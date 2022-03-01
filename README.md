@@ -3,6 +3,7 @@
 Django web application for chatting. It requires user to create an account and have access to groups. Only user with staff permissions can create, edit or delete group and add users to it. 
 Users can chat with each other and create private conversations.
 
+This site is going to be an updated version of 'SlackLike' site. 
 ## Running
 
 1. Install virtual environment:
